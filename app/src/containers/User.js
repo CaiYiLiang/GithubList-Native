@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { setVisibilityFilter } from '../actions';
 import { fetchUser } from '../actions';
 import Header from '../components/Header';
 
@@ -10,9 +9,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onClick: (filter) => {
-    dispatch(setVisibilityFilter(filter))
-  },
   fetchUser: (userName) => {
     dispatch(fetchUser(userName))
   }

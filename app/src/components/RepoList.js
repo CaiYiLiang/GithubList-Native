@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, FlatList, Text, StyleSheet } from 'react-native';
+import { View, FlatList, Text, StyleSheet, Linking } from 'react-native';
 import _ from 'lodash';
+import FootButton from '../containers/FootButton';
 
 export default class RepoList extends Component {
        componentDidMount(){
@@ -13,18 +14,17 @@ export default class RepoList extends Component {
             let reposSort = repos.map(repo => _.mapKeys(_.pick(repo,['id','name','fork','html_url','stargazers_count','description']),(value,key)=>key==='id'? 'key':key));
             let reposFilter = getVisibleRepos(reposSort,filter);
             return (
-               <View>
+               <View>              
                 <FlatList data={reposFilter}
                   renderItem={({item}) => 
                       <View style={styles.container} >
-                      <Text style={styles.repoName} onPress={() => Linking.openURL(item.html_url)}>{item.name}</Text> 
-                      <Text style={styles.repoDescription} >{item.description? item.description : 'No Description' }</Text> 
-                      <Text style={styles.repoStatus}>{ item.stargazers_count ? `${item.stargazers_count} Likes` : "FORKED"}</Text>
-                      </View>
-                      }
+                        <Text style={styles.repoName} onPress={() => Linking.openURL(item.html_url)} >{item.name}</Text> 
+                        <Text style={styles.repoDescription} >{item.description? item.description : 'No Description' }</Text> 
+                        {item.stargazers_count>0 && <Text style={styles.repoLike}> {item.stargazers_count} Likes </Text>}
+                        {item.fork && <Text style={styles.repoForked}> FORKED </Text>}
+                      </View>}
                    />
                </View>
-            
             )}
         return <Text></Text>
       }
@@ -45,20 +45,24 @@ export default class RepoList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-       flex:1,
-       marginTop:15
+       marginBottom:15
     },
     repoName: {
        textAlign: 'center',
        fontSize: 22,
-       color:'#3c3c3c'
+       color:'#3c3c3c',
+       textDecorationLine:'underline'
     },
     repoDescription: {
        textAlign: 'center',
-       fontSize: 15,
+       fontSize: 17,
     },
-    repoStatus: {
-       textAlign: 'center'
+    repoLike: {
+       textAlign: 'center',
+       color:'lightcoral'
+    },
+    repoForked: {
+       textAlign: 'center',
     }
 })
 

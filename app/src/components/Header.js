@@ -7,7 +7,7 @@ export default class Header extends Component {
     }
 
      render() {
-       let {user, onClick} = this.props;
+       let {user} = this.props;
        if(user){
            const { login, avatar_url, html_url, public_repos, created_at, updated_at } = user;
         return ( 
@@ -27,7 +27,8 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 15,
+    marginBottom:15,
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomColor: 'rgba(250, 10, 10, 0.45)',
