@@ -16,9 +16,10 @@ export default class RepoList extends Component {
                <View>
                 <FlatList data={reposFilter}
                   renderItem={({item}) => 
-                      <View>
-                      <Text>{item.name}</Text> 
-                      <Text>{item.description}</Text> 
+                      <View style={styles.container} >
+                      <Text style={styles.repoName} onPress={() => Linking.openURL(item.html_url)}>{item.name}</Text> 
+                      <Text style={styles.repoDescription} >{item.description? item.description : 'No Description' }</Text> 
+                      <Text style={styles.repoStatus}>{ item.stargazers_count ? `${item.stargazers_count} Likes` : "FORKED"}</Text>
                       </View>
                       }
                    />
@@ -41,4 +42,23 @@ export default class RepoList extends Component {
        throw new Error('Unknown filter: ' + filter)
   }
 }
+
+const styles = StyleSheet.create({
+    container: {
+       flex:1,
+       marginTop:15
+    },
+    repoName: {
+       textAlign: 'center',
+       fontSize: 22,
+       color:'#3c3c3c'
+    },
+    repoDescription: {
+       textAlign: 'center',
+       fontSize: 15,
+    },
+    repoStatus: {
+       textAlign: 'center'
+    }
+})
 

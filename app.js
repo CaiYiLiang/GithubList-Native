@@ -10,10 +10,10 @@ import App from './app/src';
 const epicMiddleware = createEpicMiddleware(rootEpic);
 let store = createStore(rootReducer,applyMiddleware(epicMiddleware));
 
-let App = () => (
+let app = () => (
   <Provider store={store}>
     <App />
   </Provider>
 );
 
-export default App; 
+export default app; 
