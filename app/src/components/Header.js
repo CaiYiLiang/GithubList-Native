@@ -27,7 +27,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: 20,
     marginBottom:15,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
       color: '#3c3c3c'
   },
   Loading: {
+      marginTop: 50,
       textAlign: 'center',
       fontSize: 18,
       color: '#3c3c3c'

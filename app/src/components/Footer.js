@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, Alert } from 'react-native';
+import { View, Button, StyleSheet, Alert,Text } from 'react-native';
 
-export default class Footer extends Component { 
-    _onPressButton() {
-    Alert.alert(this.props.user)
-  }
+export default class Footer extends Component {
      render() {
         let {onClick} = this.props;
+        // console.warn(onClick);
         return ( 
            <View style={styles.container}>
-               <Button
-                onPress={ this._onPressButton }
-                title="All Repos"
-               />
-               <Button
-                onPress={() =>  Alert.alert('You tapped the button!') }
-                title="My Repos"
-                color="#841584"
-                />
+               <View style={styles.allButton}>
+                  <Button
+                   onPress={ () => onClick("SHOW_ALL") }
+                   title="ALL"
+                   color="rgba(250, 10, 10, 0.45)"
+                 />
+               </View>
+               <View style={styles.MyButton}>
+                  <Button
+                   onPress={ () => onClick("OWNER") }
+                   title="MY"
+                   color="rgba(250, 10, 10, 0.45)"
+                 />
+                </View>
+                <View style={styles.ForkedButton}>
                 <Button
-                onPress={() =>  Alert.alert('You tapped the button!') }
-                title="Forked Repos"
-                color="#841584"
+                onPress={() => onClick("FORK") }
+                title="FORK"
+                color="rgba(250, 10, 10, 0.45)"
                 />
+                </View>
            </View>
            ) 
        }
@@ -31,7 +36,16 @@ export default class Footer extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+  },
+  allButton: {
+    flex:1,
+  },
+  MyButton: {
+    flex:1,
+  },
+  ForkedButton: {
+    flex:1,
   }
 });
 

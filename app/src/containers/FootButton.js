@@ -8,11 +8,12 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: "state.fetchUser.user"
+    user: "test"
   }
 }
+
 
 let FootButton = connect(
   mapStateToProps,

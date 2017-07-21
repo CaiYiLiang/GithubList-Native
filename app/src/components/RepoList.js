@@ -45,17 +45,17 @@ export default class RepoList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-       marginBottom:15
+       marginBottom:20
     },
     repoName: {
        textAlign: 'center',
-       fontSize: 22,
+       fontSize: 20,
        color:'#3c3c3c',
        textDecorationLine:'underline'
     },
     repoDescription: {
        textAlign: 'center',
-       fontSize: 17,
+       fontSize: 15,
     },
     repoLike: {
        textAlign: 'center',
