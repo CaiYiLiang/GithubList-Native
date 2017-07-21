@@ -5,7 +5,7 @@
 <br>
 
 ## demo
-<img src="./nativeList.JPG" alt="Native-GithubRepos-List" >
+<img src="./nativeList.JPG" alt="Native-GithubRepos-List" width="450px" >
 <br>
 
 ## Build Setup
